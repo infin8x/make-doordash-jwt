@@ -1,6 +1,6 @@
-# `make-doordash-jwt`: A command-line tool to generate a DoorDash Developer JWT
+# `make-doordash-jwt`
 
-This simple CLI tool takes a DoorDash Access Key (a JSON object comprised of a `developerId`, `key_id`, and `signing_secret` and creates a JWT.
+This simple CLI tool takes a DoorDash Access Key (a JSON object comprised of a `developerId`, `key_id`, and `signing_secret`) and creates a JWT.
 
 ## How to install
 
