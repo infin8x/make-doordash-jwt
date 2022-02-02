@@ -30,7 +30,7 @@ If you don't have Go installed:
 make-doordash-jwt -f key.json
 ```
 
-OR
+Alternatively, you can provide the Access Key directly on the command line. Make sure to surround it with single quotes ("`"). See below for an example:
 
 ```sh
 make-doordash-jwt -o `{
