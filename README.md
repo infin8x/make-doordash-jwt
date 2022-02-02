@@ -10,7 +10,11 @@ If you have Go installed:
 go install github.com/infin8x/make-doordash-jwt
 ```
 
-If you don't have Go installed, select the latest release from the sidebar on the right and download the version appropriate for your system. Tip: `darwin-amd64` is probably what you want if you have a Mac; `windows-amd64.exe`, if you have a Windows machine.
+If you don't have Go installed:
+
+1. Select the latest release from the sidebar on the right (look for "v1.0.[something]")
+1. Download the version appropriate for your system
+    1. Tip: `darwin-amd64` is probably what you want if you have a Mac; `windows-amd64.exe`, if you have a Windows machine.
 
 ## How to use
 
