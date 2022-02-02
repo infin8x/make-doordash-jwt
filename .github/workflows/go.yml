@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+    - name: Install Gox
+      run: go install github.com/mitchellh/gox
+
+    - name: Build
+      run: |
+        gox \
+        -osarch="darwin/arm64 darwin/amd64 windows/amd64 linux/amd64" \
+        -output="outputs/{{.OS}}/{{.Arch}}/{{.Dir}}"
+    
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      id: upload_release_asset 
+      uses: alexellis/upload-assets@0.3.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_paths: '[./outputs/**/*]'
