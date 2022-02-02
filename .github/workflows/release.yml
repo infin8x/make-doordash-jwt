@@ -23,7 +23,7 @@ jobs:
       run: |
         gox \
         -osarch="darwin/arm64 darwin/amd64 windows/amd64 linux/amd64" \
-        -output="outputs/{{.OS}}/{{.Arch}}/{{.Dir}}"
+        -output="outputs/{{.OS}}/{{.Dir}}-{{.Arch}}"
     
     - name: Create release
       id: create_release
